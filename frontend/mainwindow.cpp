@@ -12,8 +12,6 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
-    delete objectStudentWindow;
-    objectStudentWindow=nullptr;
 }
 
 
@@ -60,7 +58,7 @@ void MainWindow::loginSlot(QNetworkReply *reply)
                 ui->labelInfo->setText("Tunnus ja salasana eivät täsmää");
             }
             else {
-                objectStudentWindow=new StudentWindow(id_student);
+                objectStudentWindow=new StudentWindow(id_student, this);
                 objectStudentWindow->setWebToken("Bearer "+response_data);
                 objectStudentWindow->show();
             }

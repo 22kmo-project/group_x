@@ -16,8 +16,6 @@ StudentWindow::StudentWindow(QString id_student, QWidget *parent) :
 StudentWindow::~StudentWindow()
 {
     delete ui;
-    delete objectStudentEdit;
-    objectStudentEdit=nullptr;
 }
 
 void StudentWindow::setWebToken(const QByteArray &newWebToken)
@@ -100,7 +98,7 @@ void StudentWindow::dataSlot(QNetworkReply *reply)
 
 void StudentWindow::on_btnUpdate_clicked()
 {
-    objectStudentEdit=new StudentEdit(webToken,fname,lname,myStudentId);
+    objectStudentEdit=new StudentEdit(webToken,fname,lname,myStudentId, this);
     objectStudentEdit->show();
 
 }
